@@ -25,7 +25,17 @@ st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
 st.sidebar.title("Working in Aqua Business")
 
 
-
+                                                                                              # For funny widget
 animate_1 = st.balloon()
 animate_2 = st.snow()
+
+option_1 = st.selectbox(
+     'Which type you need to celebrate?',
+     ('Balloon', 'snow'))
+
+if option_1 == 'Balloon':
+  animate_1
+elif option_1 == 'snow':
+  animate_2
+  
 
