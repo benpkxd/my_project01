@@ -1,32 +1,74 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+# make a title
+st.title("🏠 Title")                                                                                              
+# make a header
+st.header("👨‍🔬⚗️ Header 🔬")
+# make a sub header
+st.subheader("sub header")
 
-st.title("🏠 Home")                                                                                              
+# make a random data
+data = np.random.randn(10,1)
 
-st.header("👨‍🔬⚗️ Research Project 🔬")
-
-# get data in to variable
+# get data in to dataframe
 df = pd.DataFrame({
 'ID': [1,2,3,4],
-'Project' : ['PCR 自配','PCR 鉴定','益生菌','养殖技术'],
-'Type' : ['PCR','PCR','PRO','Other'],
-'Rate' : [5,3,4,4]
+'Sentence' : ['This','is','a','example'],
 })
-
 st.write(df)
 
-st.subheader("")
+# make a score card
+st.metric(label="Name", value="70 °F", delta="1.2 °F")
+
+# make layout (sidebar)
+with st.sidebar:
+  st.title("This is sidebar title")
+  st.header("This is sidebar header")
+  add_selectbox = st.selectbox("This is select box",("option1","option2","option3"))
+  add_radio = st.radio(
+        "This is a radio",
+        ("option1", "option2")
+    )
+
+# make layout (column)
+col1,col2 = st.columns([3,1])
+col1.write("mention in col1 with 3x of col2")
+col2.write("mention in col2")
+col2.write(data)
+
+# make layout (tab)
+tab1, tab2, tab3 = st.tabs(["Tab1", "Tab2", "Tab3"])
+
+with tab1:
+   st.header("tab1")
+   st.write("This is not a image")
+   st.image("https://www.soitron.com/robots-take-the-robot-out-of-the-human/", width=200) 
+
+with tab2:
+   st.header("tab2")
+   st.write("This is a image")
+   st.image("data:image/jpeg;base64,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", width=200)
+
+# make a expander
+expander = st.expander("See explanation")
+expander.write("""
+    The chart above shows some numbers I picked for you.
+    I rolled actual dice for these, so they're *guaranteed* to
+    be random.
+""")
+expander.image("https://static.streamlit.io/examples/dice.jpg")
 
 
-st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
+# make container
+add_container = st.container()
+with add_container:
+  st.write("this is container")
+  st.bar_chart(data)
 
- # make layout (sidebar)
-st.sidebar.title("Working in Aqua Business")
 
- # For funny widget
-
-
+# For funny widget
+## make an option 
 option_1 = st.selectbox(
      'Which type you need to celebrate?',
      ('Balloon', 'snow'))
@@ -36,4 +78,10 @@ if option_1 == 'Balloon':
 elif option_1 == 'snow':
   st.snow()
   
+
+
+
+
+
+
 
