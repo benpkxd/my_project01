@@ -1,2 +1,2 @@
 streamlit
-gsheetsdb==3.9
+gsheetsdb==0.1.13.1
